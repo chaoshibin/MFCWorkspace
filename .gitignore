@@ -39,7 +39,6 @@
 *.aps
 *.opensdf
 *.sdf
-*.def
 *.aps
 *.def
 *.vcxproj.user
