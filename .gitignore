@@ -40,7 +40,6 @@
 *.opensdf
 *.sdf
 *.aps
-*.def
 *.vcxproj.user
 ReadMe.txt
 Debug/
