@@ -42,7 +42,6 @@
 *.def
 *.aps
 *.def
-*.rc
 *.vcxproj.user
 ReadMe.txt
 Debug/
