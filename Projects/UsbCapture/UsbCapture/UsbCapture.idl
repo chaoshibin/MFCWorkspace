@@ -1,0 +1,57 @@
+// UsbCapture.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(UsbCapture.tlb)，该类型库将成为
+// UsbCapture.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(16767E43-974A-40CF-8C56-1AB80CE10B5F), version(1.0),
+  control ]
+library UsbCaptureLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CUsbCaptureCtrl 的主调度接口
+	[ 
+		uuid(337D8864-9C89-4335-A88F-BE2CDC89DA73)	
+	]
+	dispinterface _DUsbCapture
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] void takePhoto(BSTR filePath);
+			[id(2)] void Disconnect();
+			[id(3)] BYTE DELETE_FILE(BSTR filePath);
+			[id(4)] BYTE DLE_FILE(CHAR* fileName);
+			[id(5)] BYTE TAKE_PHOTO(BSTR fileName);
+			[id(6)] BSTR BASE64_Encode(BSTR fileName);
+	};
+
+	//  CUsbCaptureCtrl 的事件调度接口
+
+	[ 
+		uuid(E0903E55-5DE1-4BCF-8E65-E131098B8170)	
+	]
+	dispinterface _DUsbCaptureEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CUsbCaptureCtrl 的类信息
+	[
+		uuid(6B66F9C4-1DA0-4463-9637-AC00A574AD7A)
+	]
+	coclass UsbCapture
+	{
+		[default] dispinterface _DUsbCapture;
+		[default, source] dispinterface _DUsbCaptureEvents;
+	};
+
+};

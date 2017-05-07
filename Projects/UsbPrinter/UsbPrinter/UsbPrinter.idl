@@ -1,0 +1,52 @@
+// UsbPrinter.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(UsbPrinter.tlb)，该类型库将成为
+// UsbPrinter.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(DD44A22D-2F44-4E35-A9B4-CF4F5DE0F104), version(1.0),
+  control ]
+library UsbPrinterLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CUsbPrinterCtrl 的主调度接口
+	[ 
+		uuid(7735B5C6-4BD4-4F5C-A5FC-73384F3F3AF7)	
+	]
+	dispinterface _DUsbPrinter
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] LONG SendLocalFilePath(BSTR lpFilePath);
+	};
+
+	//  CUsbPrinterCtrl 的事件调度接口
+
+	[ 
+		uuid(40317828-19E3-48FB-ABDF-9F9A964A88C8)	
+	]
+	dispinterface _DUsbPrinterEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CUsbPrinterCtrl 的类信息
+	[
+		uuid(24D9A3F7-6690-41BB-B00E-C8929873AB34)
+	]
+	coclass UsbPrinter
+	{
+		[default] dispinterface _DUsbPrinter;
+		[default, source] dispinterface _DUsbPrinterEvents;
+	};
+
+};

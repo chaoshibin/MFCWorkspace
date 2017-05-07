@@ -1,0 +1,66 @@
+// GrandDogWeb.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(GrandDogWeb.tlb)，该类型库将成为
+// GrandDogWeb.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(6ECFD4FB-3277-4596-AFF5-51025D3D74F0), version(1.0),
+  control ]
+library GrandDogWebLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CGrandDogWebCtrl 的主调度接口
+	[ 
+		uuid(2ABB59CC-9690-4561-AE7B-F9A43A37B1FC)	
+	]
+	dispinterface _DGrandDogWeb
+	{
+		properties:
+			[id(3)] ULONG lDogHandle;
+			[id(10)] BSTR EncryptData;
+			[id(14)] BSTR ReadData;
+			[id(15)] BSTR DogSerial;
+	methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] ULONG RC_OPENDOG_EX(ULONG ulFlag, CHAR* pszProductName, ULONG* pDogHandle);
+			[id(2)] ULONG WRC_OPENDOG(LONG ulFlag, BSTR pszProductName);
+			[id(4)] ULONG WRC_VerifyPassword(ULONG DogHandle, CHAR ucPasswordType, BSTR pszPassword);
+			[id(5)] ULONG WRC_ChangePassword(ULONG lDogHandle, CHAR ucPasswordType, BSTR pszPassword);
+			[id(6)] ULONG WRC_CreateDir(ULONG lDogHandle, USHORT dirId, ULONG dirSize);
+			[id(7)] ULONG WRC_CreateFile(ULONG lDogHandle, USHORT usDirID, USHORT usFileID, CHAR ucFileType, ULONG ulFileLen);
+			[id(8)] ULONG WRC_CheckDog(ULONG lDogHandle);
+			[id(9)] ULONG WRC_EncryptData(ULONG lDogHandle, BSTR pucIn, ULONG ulInLen, ULONG pulOutLen);
+			[id(11)] ULONG WRC_CloseDog(ULONG lDogHandle);
+			[id(12)] ULONG WriteDog(BSTR data);
+			[id(13)] ULONG ReadDog();
+	};
+
+	//  CGrandDogWebCtrl 的事件调度接口
+
+	[ 
+		uuid(DBB05F08-6AA4-4357-957D-95AACB2E827A)	
+	]
+	dispinterface _DGrandDogWebEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CGrandDogWebCtrl 的类信息
+	[
+		uuid(A7E91C27-2169-4776-9350-3CC763082C56)
+	]
+	coclass GrandDogWeb
+	{
+		[default] dispinterface _DGrandDogWeb;
+		[default, source] dispinterface _DGrandDogWebEvents;
+	};
+
+};
