@@ -43,7 +43,7 @@
 *.aps
 *.def
 *.rc
-*.vcxproj.*
+*.vcxproj.user
 ReadMe.txt
 Debug/
 Release/
